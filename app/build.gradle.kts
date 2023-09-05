@@ -51,6 +51,11 @@ android {
             excludes += "/*.jar"
         }
     }
+
+    lint {
+        disable.add("MissingTranslation")
+        disable.add("ExtraTranslation")
+    }
 }
 
 dependencies {

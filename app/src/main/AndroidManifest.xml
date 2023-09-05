@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <application
+        android:name=".JetpackSampleApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -13,36 +16,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JetpackSample"
         tools:targetApi="31">
-        <activity
-            android:name=".paging.sample.PagingActivity"
-            android:theme="@style/AppTheme"
-            android:exported="false" />
-        <activity
-            android:name=".room.RoomActivity"
-            android:theme="@style/AppTheme"
-            android:exported="false" />
-
-        <activity
-            android:name=".paging.pagingsample.CheeseActivity"
-            android:theme="@style/AppTheme"
-            android:exported="false" />
-        <activity
-            android:name=".paging.pagingwithnetwork.reddit.ui.RedditActivity"
-            android:theme="@style/AppTheme"
-            android:exported="false" />
-
-        <activity
-            android:name=".paging.codelabs.advanced.ui.SearchRepositoriesActivity"
-            android:theme="@style/PagingAdvancedTheme"
-            android:exported="false" />
-        <activity
-            android:name=".paging.codelabs.basic.ui.ArticleActivity"
-            android:theme="@style/AppTheme"
-            android:exported="false" />
-        <activity
-            android:name=".paging.pagingwithnetwork.PagingNetWorkActivity"
-            android:theme="@style/AppTheme"
-            android:exported="false" />
 
         <activity
             android:name=".main.MainActivity"
@@ -55,6 +28,46 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".room.codelabs.roomwordssample.RoomWordActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".room.codelabs.roomwordssample.NewWordActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".paging.sample.PagingActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".room.sample.RoomActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+
+        <activity
+            android:name=".paging.pagingsample.CheeseActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".paging.pagingwithnetwork.reddit.ui.RedditActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+
+        <activity
+            android:name=".paging.codelabs.advanced.ui.SearchRepositoriesActivity"
+            android:exported="false"
+            android:theme="@style/PagingAdvancedTheme" />
+        <activity
+            android:name=".paging.codelabs.basic.ui.ArticleActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".paging.pagingwithnetwork.PagingNetWorkActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+
     </application>
 
 </manifest>

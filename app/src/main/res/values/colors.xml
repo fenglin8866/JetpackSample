@@ -9,8 +9,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="colorPrimary">#FF6650a4</color>
-    <color name="colorPrimaryDark">#FF625b71</color>
+    <color name="colorPrimary">@color/teal_200</color>
+    <color name="colorPrimaryDark">@color/teal_700</color>
     <color name="colorAccent">#FF7D5260</color>
 
     <color name="titleColor">#1F75FE</color>
@@ -19,4 +19,5 @@
     <color name="separatorBackground">#AAAAAA</color>
     <color name="separatorText">#FFFFFF</color>
 
+    <color name="buttonLabel">#FFFFFF</color>
 </resources>

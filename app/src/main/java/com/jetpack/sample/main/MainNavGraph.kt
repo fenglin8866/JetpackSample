@@ -1,6 +1,5 @@
 package com.jetpack.sample.main
 
-import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
@@ -10,6 +9,7 @@ import com.jetpack.sample.main.MainDestination.PAGING_ROUTE
 import com.jetpack.sample.main.MainDestination.ROOM_ROUTE
 import com.jetpack.sample.main.MainDestination.MAIN_HOME_ROUTE
 import com.jetpack.sample.paging.pagingmain.PagingScreen
+import com.jetpack.sample.room.roommain.RoomScreen
 
 
 object MainDestination {
@@ -31,7 +31,7 @@ fun MainNavGraph(navController: NavHostController) {
             PagingScreen()
         }
         composable(ROOM_ROUTE) {
-            //StateBasicScreen()
+            RoomScreen()
         }
     }
 }
