@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">JetpackSample</string>
+    <string name="add_cheese">add cheese</string>
+    <string name="add">add</string>
+
+    <string name="retry">Retry</string>
+    <string name="search_hint">Subreddit Name</string>
+    <string name="default_subreddit">androiddev</string>
+    <string name="db_plus_network">db + network</string>
+    <string name="network_only_by_item">network only (by item)</string>
+    <string name="network_only_by_page">network only (by page)</string>
+
+    <string name="loading">Loading</string>
+    <string name="language">Language: %s</string>
+    <string name="search_hint2">GitHub Repository</string>
+    <string name="no_results">No results 😓</string>
+    <string name="unknown">\?</string>
+</resources>

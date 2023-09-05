@@ -1,0 +1,5 @@
+LoadParams 对象包含有关要执行的加载操作的信息，其中包括要加载的键和要加载的项数。
+LoadResult 对象包含加载操作的结果。LoadResult 是一个密封的类，根据 load() 调用是否成功，采用如下两种形式之一：
+
+如果加载成功，则返回 LoadResult.Page 对象。
+如果加载失败，则返回 LoadResult.Error 对象。
