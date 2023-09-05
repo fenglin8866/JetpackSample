@@ -10,7 +10,7 @@ import androidx.core.content.ContextCompat
 fun MainListScreen(data: List<String>, intentHandler: (String, Context) -> Intent?) {
     val context = LocalContext.current
     ListScreenString(data = data) { content ->
-         var intent: Intent? = intentHandler(content,context)
+        var intent: Intent? = intentHandler(content, context)
         intent?.let {
             ContextCompat.startActivity(context, intent, null)
         }

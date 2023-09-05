@@ -1,12 +1,12 @@
-package com.jetpack.sample.room.roommain
+package com.jetpack.sample.room
 
 import android.content.Intent
 import androidx.compose.runtime.*
 import com.jetpack.sample.common.MainListScreen
-import com.jetpack.sample.room.sample.RoomActivity
+import com.jetpack.sample.room.roomsample.RoomActivity
 import com.jetpack.sample.room.codelabs.roomwordssample.RoomWordActivity
-import com.jetpack.sample.room.roommain.RoomData.ROOM_CODELABS_ROUTE
-import com.jetpack.sample.room.roommain.RoomData.ROOM_SIMPLE_ROUTE
+import com.jetpack.sample.room.RoomData.ROOM_CODELABS_ROUTE
+import com.jetpack.sample.room.RoomData.ROOM_SIMPLE_ROUTE
 
 object RoomData {
     const val ROOM_SIMPLE_ROUTE = "Room_Simple"

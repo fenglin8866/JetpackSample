@@ -1,14 +1,14 @@
-package com.jetpack.sample.paging.pagingmain
+package com.jetpack.sample.paging
 
 import android.content.Intent
 import androidx.compose.runtime.*
 import com.jetpack.sample.common.MainListScreen
 import com.jetpack.sample.paging.codelabs.advanced.ui.SearchRepositoriesActivity
 import com.jetpack.sample.paging.codelabs.basic.ui.ArticleActivity
-import com.jetpack.sample.paging.pagingmain.PagingData.PAGING_CODELABS_ROUTE_1
-import com.jetpack.sample.paging.pagingmain.PagingData.PAGING_CODELABS_ROUTE_2
-import com.jetpack.sample.paging.pagingmain.PagingData.PAGING_NETWORK_ROUTE
-import com.jetpack.sample.paging.pagingmain.PagingData.PAGING_SIMPLE_ROUTE
+import com.jetpack.sample.paging.PagingData.PAGING_CODELABS_ROUTE_1
+import com.jetpack.sample.paging.PagingData.PAGING_CODELABS_ROUTE_2
+import com.jetpack.sample.paging.PagingData.PAGING_NETWORK_ROUTE
+import com.jetpack.sample.paging.PagingData.PAGING_SIMPLE_ROUTE
 import com.jetpack.sample.paging.pagingsample.CheeseActivity
 import com.jetpack.sample.paging.pagingwithnetwork.PagingNetWorkActivity
 

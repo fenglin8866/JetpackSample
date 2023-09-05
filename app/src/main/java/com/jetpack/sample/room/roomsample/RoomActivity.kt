@@ -1,4 +1,4 @@
-package com.jetpack.sample.room.sample
+package com.jetpack.sample.room.roomsample
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

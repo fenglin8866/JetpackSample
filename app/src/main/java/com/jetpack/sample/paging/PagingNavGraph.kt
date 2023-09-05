@@ -1,4 +1,4 @@
-package com.jetpack.sample.paging.pagingmain
+package com.jetpack.sample.paging
 
 import android.util.Log
 import androidx.compose.runtime.Composable
@@ -7,8 +7,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.jetpack.sample.common.ListScreenString
-import com.jetpack.sample.paging.pagingmain.PagingDestination.HOME_ROUTE
-import com.jetpack.sample.paging.pagingmain.PagingDestination.PAGING_SIMPLE_ROUTE
+import com.jetpack.sample.paging.PagingDestination.HOME_ROUTE
+import com.jetpack.sample.paging.PagingDestination.PAGING_SIMPLE_ROUTE
 
 object PagingDestination {
     const val HOME_ROUTE = "paging_home"
