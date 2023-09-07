@@ -33,5 +33,6 @@ class SampleApplication : Application() {
     val database by lazy { WordRoomDatabase.getDatabase(this, applicationScope) }
     val repository by lazy { WordRepository(database.wordDao()) }
     private val userDatabase by lazy { UserDatabase.getDatabase(this, applicationScope) }
-    val useRepository by lazy { UserRepository(userDatabase.userDao()) }
+    private val userDatabase2 by lazy { UserDatabase.getDatabase2(this) }
+    val useRepository by lazy { UserRepository(userDatabase2.userDao()) }
 }

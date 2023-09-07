@@ -10,6 +10,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -33,6 +34,7 @@ class SampleRoomActivity : ComponentActivity() {
                     val viewModel: SampleRoomViewModel by viewModels {
                         SampleRoomViewModelFactory((application as SampleApplication).useRepository)
                     }
+                    viewModel.loadUserData()
                     SampleRoomScreen(viewModel)
                 }
             }
@@ -42,7 +44,8 @@ class SampleRoomActivity : ComponentActivity() {
 
 @Composable
 fun SampleRoomScreen(model: SampleRoomViewModel) {
-    val usersState = model.users.collectAsStateWithLifecycle()
+    //val usersState = model.users.collectAsStateWithLifecycle()
+    val users by model.users3.observeAsState()
     Column {
         var inputStr by remember {
             mutableStateOf("")
@@ -53,12 +56,19 @@ fun SampleRoomScreen(model: SampleRoomViewModel) {
                 inputStr = it
             },
             doClick = {
-                model.addUser(User(it.length, it, it))
+                // model.addUser(User(it.length, it, it))
+                model.addUser2(User(it.length, it, it))
             },
             modifier = Modifier
         )
-        ListScreen(usersState.value, trans = { user -> user.toString() }) {
 
+        /* ListScreen(usersState.value, trans = { user -> user.toString() }) {
+
+         }*/
+        if (users != null) {
+            ListScreen(users!!, trans = { user -> user.toString() }) {
+
+            }
         }
     }
 }
