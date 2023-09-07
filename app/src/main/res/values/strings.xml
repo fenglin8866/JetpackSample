@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">JetpackSample</string>
+    <string name="app_name">ProgramSample</string>
     <string name="add_cheese">add cheese</string>
     <string name="add">add</string>
 
@@ -21,4 +21,6 @@
     <string name="button_save">Save</string>
     <string name="empty_not_saved">Word not saved because it is empty.</string>
     <string name="add_word">Add word</string>
+    <string name="title_activity_sample_room">SampleRoomActivity</string>
+    <string name="title_activity_main">MainActivity</string>
 </resources>

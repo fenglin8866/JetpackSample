@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
-        android:name=".JetpackSampleApplication"
+        android:name="com.program.SampleApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -16,11 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JetpackSample"
         tools:targetApi="31">
-
         <activity
-            android:name=".main.MainActivity"
+            android:name="com.program.main.MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.JetpackSample">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,46 +26,42 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name=".room.codelabs.roomwordssample.RoomWordActivity"
+            android:name=".jetpack.sample.room.roomsample.SampleRoomActivity"
+            android:exported="false"
+            android:theme="@style/Theme.JetpackSample" />
+        <activity
+            android:name=".jetpack.sample.room.codelabs.roomwordssample.RoomWordActivity"
             android:exported="false"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".room.codelabs.roomwordssample.NewWordActivity"
+            android:name=".jetpack.sample.room.codelabs.roomwordssample.NewWordActivity"
             android:exported="false"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".paging.sample.PagingActivity"
+            android:name=".jetpack.sample.paging.sample.PagingActivity"
             android:exported="false"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".room.roomsample.RoomActivity"
-            android:exported="false"
-            android:theme="@style/AppTheme" />
-
-        <activity
-            android:name=".paging.pagingsample.CheeseActivity"
+            android:name=".jetpack.sample.paging.pagingsample.CheeseActivity"
             android:exported="false"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".paging.pagingwithnetwork.reddit.ui.RedditActivity"
+            android:name=".jetpack.sample.paging.pagingwithnetwork.reddit.ui.RedditActivity"
             android:exported="false"
             android:theme="@style/AppTheme" />
-
         <activity
-            android:name=".paging.codelabs.advanced.ui.SearchRepositoriesActivity"
+            android:name=".jetpack.sample.paging.codelabs.advanced.ui.SearchRepositoriesActivity"
             android:exported="false"
             android:theme="@style/PagingAdvancedTheme" />
         <activity
-            android:name=".paging.codelabs.basic.ui.ArticleActivity"
+            android:name=".jetpack.sample.paging.codelabs.basic.ui.ArticleActivity"
             android:exported="false"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".paging.pagingwithnetwork.PagingNetWorkActivity"
+            android:name=".jetpack.sample.paging.pagingwithnetwork.PagingNetWorkActivity"
             android:exported="false"
             android:theme="@style/AppTheme" />
-
     </application>
 
 </manifest>
