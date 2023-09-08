@@ -49,11 +49,11 @@ public class DataRepository {
         return mObservableProducts;
     }
 
-    public LiveData<ProductEntity> loadProduct(final int productId) {
+    public LiveData<ProductEntity> loadProduct(int productId) {
         return mDatabase.productDao().loadProduct(productId);
     }
 
-    public LiveData<List<CommentEntity>> loadComments(final int productId) {
+    public LiveData<List<CommentEntity>> loadComments(int productId) {
         return mDatabase.commentDao().loadComments(productId);
     }
 

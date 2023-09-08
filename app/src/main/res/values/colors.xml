@@ -22,4 +22,9 @@
     <color name="buttonLabel">#FFFFFF</color>
 
     <color name="comment_light_background">#d6d6d6</color>
+
+    <drawable name="completedTaskBackground">#CCCCCC</drawable>
+    <drawable name="touchFeedback">#CFD8DC</drawable>
+    <color name="colorTextPrimary">#000000</color>
+    <color name="colorGrey">#757575</color>
 </resources>

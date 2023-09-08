@@ -1,8 +1,9 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-  //  id("org.jetbrains.kotlin.kapt")
+    id("org.jetbrains.kotlin.kapt")
     id("com.google.devtools.ksp")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -174,6 +175,25 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-compose:$androidx_lifecycle")
 
 
+    implementation("com.google.dagger:hilt-android:2.48")
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+    implementation("androidx.hilt:hilt-work:1.0.0")
+
+    kapt("com.google.dagger:hilt-android-compiler:2.48")
+    kapt("androidx.hilt:hilt-compiler:1.0.0")
+
+    val accompanist_version = "0.30.1"
+    implementation ("com.google.accompanist:accompanist-swiperefresh:$accompanist_version")
+    implementation ("com.google.accompanist:accompanist-insets:$accompanist_version")
+    implementation ("com.google.accompanist:accompanist-systemuicontroller:$accompanist_version")
+    implementation ("com.google.accompanist:accompanist-flowlayout:$accompanist_version")
+    implementation ("com.google.accompanist:accompanist-pager:$accompanist_version")
+    implementation ("com.google.accompanist:accompanist-permissions:$accompanist_version")
+    implementation ("com.google.accompanist:accompanist-adaptive:$accompanist_version")
+    implementation ("com.google.accompanist:accompanist-appcompat-theme:$accompanist_version")
+
+    implementation ("com.jakewharton.timber:timber:5.0.1")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
 }
 
 

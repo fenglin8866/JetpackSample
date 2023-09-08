@@ -24,12 +24,18 @@ import com.program.jetpack.sample.room.codelabs.roomwordssample.WordRepository
 import com.program.jetpack.sample.room.codelabs.roomwordssample.WordRoomDatabase
 import com.program.jetpack.sample.room.roomsample.UserDatabase
 import com.program.jetpack.sample.room.roomsample.UserRepository
+import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
+import timber.log.Timber
 
 /**
  * Android Application class. Used for accessing singletons
+ *
+ * Application that sets up Timber in the DEBUG BuildConfig.
+ * Read Timber's documentation for production setups.
  */
+@HiltAndroidApp
 class SampleApplication : Application() {
     // No need to cancel this scope as it'll be torn down with the process
     val applicationScope = CoroutineScope(SupervisorJob())
@@ -46,6 +52,9 @@ class SampleApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         mAppExecutors = AppExecutors()
+        // if (BuildConfig.DEBUG) {
+        Timber.plant(Timber.DebugTree())
+        //}
     }
 
     private fun getDatabase(): AppDatabase? {

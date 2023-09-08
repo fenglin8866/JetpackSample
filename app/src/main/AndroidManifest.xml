@@ -71,6 +71,11 @@
             android:name=".example.persistence.ui.ProductActivity"
             android:exported="false"
             android:theme="@style/AppTheme" />
+
+        <activity
+            android:name=".example.todoapp.TodoActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.OverlapSystemBar" />
     </application>
 
 </manifest>
