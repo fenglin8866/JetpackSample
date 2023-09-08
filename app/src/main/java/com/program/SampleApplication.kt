@@ -17,6 +17,9 @@
 package com.program
 
 import android.app.Application
+import com.program.example.persistence.AppExecutors
+import com.program.example.persistence.DataRepository
+import com.program.example.persistence.db.AppDatabase
 import com.program.jetpack.sample.room.codelabs.roomwordssample.WordRepository
 import com.program.jetpack.sample.room.codelabs.roomwordssample.WordRoomDatabase
 import com.program.jetpack.sample.room.roomsample.UserDatabase
@@ -24,6 +27,9 @@ import com.program.jetpack.sample.room.roomsample.UserRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 
+/**
+ * Android Application class. Used for accessing singletons
+ */
 class SampleApplication : Application() {
     // No need to cancel this scope as it'll be torn down with the process
     val applicationScope = CoroutineScope(SupervisorJob())
@@ -35,4 +41,18 @@ class SampleApplication : Application() {
     private val userDatabase by lazy { UserDatabase.getDatabase(this, applicationScope) }
     private val userDatabase2 by lazy { UserDatabase.getDatabase2(this) }
     val useRepository by lazy { UserRepository(userDatabase2.userDao()) }
+
+    private lateinit var mAppExecutors: AppExecutors
+    override fun onCreate() {
+        super.onCreate()
+        mAppExecutors = AppExecutors()
+    }
+
+    private fun getDatabase(): AppDatabase? {
+        return AppDatabase.getInstance(this, mAppExecutors)
+    }
+
+    fun getProductRepository(): DataRepository? {
+        return DataRepository.getInstance(getDatabase())
+    }
 }

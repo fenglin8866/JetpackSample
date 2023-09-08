@@ -10,6 +10,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.program.example.ExampleMainScreen
 import com.program.jetpack.sample.JetpackMainScreen
 import com.program.jetpack.sample.jetpackNavGraph
 import com.program.thinking.ThinkingMainScreen
@@ -60,7 +61,7 @@ fun AppNavHost(
         }
 
         composable(Examples.route) {
-
+            ExampleMainScreen()
         }
         jetpackNavGraph()
 
