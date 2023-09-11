@@ -1,4 +1,4 @@
-package com.program.jetpack.sample.common
+package com.program.common
 
 import android.content.Context
 import android.content.Intent

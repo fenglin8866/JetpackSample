@@ -2,7 +2,7 @@ package com.program.jetpack.sample.paging
 
 import android.content.Intent
 import androidx.compose.runtime.*
-import com.program.jetpack.sample.common.MainListScreen
+import com.program.common.MainListScreen
 import com.program.jetpack.sample.paging.PagingData.PAGING_CODELABS_ROUTE_1
 import com.program.jetpack.sample.paging.PagingData.PAGING_CODELABS_ROUTE_2
 import com.program.jetpack.sample.paging.PagingData.PAGING_NETWORK_ROUTE

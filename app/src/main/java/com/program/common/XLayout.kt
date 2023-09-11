@@ -1,4 +1,4 @@
-package com.program.jetpack.sample.common
+package com.program.common
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Divider
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -27,7 +26,6 @@ fun XDivider(modifier: Modifier = Modifier) {
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun XInput(
     value: String,
@@ -46,7 +44,6 @@ fun XInput(
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun XInput(
     modifier: Modifier = Modifier

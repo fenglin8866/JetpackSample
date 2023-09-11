@@ -1,11 +1,10 @@
 package com.program.language.kotlinstudy
 
-import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.program.jetpack.sample.common.ListScreenString
+import com.program.common.ListScreenString
 import com.program.language.kotlinstudy.KotlinDestination.DELEGATE_ROUTE
 import com.program.language.kotlinstudy.KotlinDestination.HOME_ROUTE
 
@@ -27,7 +26,7 @@ fun KotlinNavGraph(navController: NavHostController) {
             }
         }
         composable(DELEGATE_ROUTE) {
-
+            DelegateTestScreen()
         }
     }
 }

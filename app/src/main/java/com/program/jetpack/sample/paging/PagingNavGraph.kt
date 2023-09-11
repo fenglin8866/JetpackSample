@@ -6,7 +6,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.program.jetpack.sample.common.ListScreenString
+import com.program.common.ListScreenString
 import com.program.jetpack.sample.paging.PagingDestination.HOME_ROUTE
 import com.program.jetpack.sample.paging.PagingDestination.PAGING_SIMPLE_ROUTE
 

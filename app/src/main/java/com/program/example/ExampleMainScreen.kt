@@ -6,7 +6,7 @@ import com.program.example.ExampleData.PRODUCE
 import com.program.example.ExampleData.TODO_SAMPLE
 import com.program.example.persistence.ui.ProductActivity
 import com.program.example.todoapp.TodoActivity
-import com.program.jetpack.sample.common.MainListScreen
+import com.program.common.MainListScreen
 
 object ExampleData {
     const val PRODUCE = "Produce"

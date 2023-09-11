@@ -15,10 +15,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.program.SampleApplication
-import com.program.jetpack.sample.common.ListScreen
-import com.program.jetpack.sample.common.XInput
+import com.program.common.ListScreen
+import com.program.common.XInput
 import com.program.main.ui.theme.JetpackSampleTheme
 
 class SampleRoomActivity : ComponentActivity() {

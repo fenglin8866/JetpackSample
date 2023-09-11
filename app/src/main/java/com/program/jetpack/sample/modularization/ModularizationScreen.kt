@@ -1,7 +1,7 @@
 package com.program.jetpack.sample.modularization
 
 import androidx.compose.runtime.Composable
-import com.program.jetpack.sample.common.MainListScreen
+import com.program.common.MainListScreen
 import com.program.jetpack.sample.modularization.ModularizationData.COMPONENT
 import com.program.jetpack.sample.modularization.ModularizationData.MODULARIZATION
 import com.program.jetpack.sample.modularization.ModularizationData.PLUG_IN

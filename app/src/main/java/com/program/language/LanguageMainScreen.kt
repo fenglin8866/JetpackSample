@@ -5,7 +5,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.program.jetpack.sample.JetpackDestination
-import com.program.jetpack.sample.common.ListScreenString
+import com.program.common.ListScreenString
 import com.program.jetpack.sample.guidearchitecture.GuideArchitectureScreen
 import com.program.jetpack.sample.lifecycle.LifecycleScreen
 import com.program.jetpack.sample.modularization.ModularizationScreen
@@ -14,6 +14,7 @@ import com.program.jetpack.sample.paging.PagingScreen
 import com.program.jetpack.sample.room.RoomScreen
 import com.program.language.LanguageData.JAVA
 import com.program.language.LanguageData.KOTLIN
+import com.program.language.kotlinstudy.DelegateTestScreen
 import com.program.language.kotlinstudy.KotlinNavGraph
 
 object LanguageData {

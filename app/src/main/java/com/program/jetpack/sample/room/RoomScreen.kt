@@ -2,7 +2,7 @@ package com.program.jetpack.sample.room
 
 import android.content.Intent
 import androidx.compose.runtime.*
-import com.program.jetpack.sample.common.MainListScreen
+import com.program.common.MainListScreen
 import com.program.jetpack.sample.room.RoomData.ROOM_CODELABS_ROUTE
 import com.program.jetpack.sample.room.RoomData.ROOM_SIMPLE_ROUTE
 import com.program.jetpack.sample.room.codelabs.roomwordssample.RoomWordActivity

@@ -1,0 +1,33 @@
+1.kotlin委托：通过类之间的关联替换继承关系，更加的灵活。
+需要继承的类功能，抽象为公共接口，通过接口实现委托。
+  类名（委托对象）: 接口 by 表达式
+  通过反编译java，实现原理：类内定义委托对象属性，通过接口覆盖方法调用委托对象的方法。
+注意点：
+    1.覆盖由委托实现的接口成员，编译器会使用 override 覆盖的实现而不是委托对象中的。
+        例如：
+    2.重写的成员不会在委托对象的成员中调用,委托对象的成员只能访问其自身对接口成员实现。
+        例如：
+    目的：使委托对象与被委托对象进行隔离。
+
+2.kotlin委托属性
+
+示例a、Compose中
+        var text by remember {
+                    mutableStateOf("")
+                }
+        分析:1、remember{} 函数执行返回的是MutableState<T>对象，即委托对象
+            2、MutableState内实现了setValue和getValue方法。
+            3、text的set和get属性委托给setValue和getValue方法，映射为MutableState中Value的变化。
+
+    b、通过委托构建ViewModel
+       private val wordViewModel: WordViewModel by viewModels {
+               WordViewModelFactory((application as SampleApplication).repository)
+           }
+           或
+       private val viewModel by viewModels<CheeseViewModel> { CheeseViewModelFactory(application) }
+
+        分析：1、泛型推到类型，需要变量声明类型（val wordViewModel: WordViewModel）或者使用泛型的时候声明类型（viewModels<CheeseViewModel>）
+             2、委托对象ViewModelLazy<VM>,内部包含属性value。构建ViewModel对象并赋值给Lazy对象中的value
+             3、变量的set和get属性委托给setValue和getValue方法。get属性通过委托对象的getValue方法，获取构建的ViewModel对象
+
+    c、延迟属性lazy,可观察属性Observable

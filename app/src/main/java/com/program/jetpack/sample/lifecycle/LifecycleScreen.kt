@@ -1,7 +1,7 @@
 package com.program.jetpack.sample.lifecycle
 
 import androidx.compose.runtime.*
-import com.program.jetpack.sample.common.MainListScreen
+import com.program.common.MainListScreen
 import com.program.jetpack.sample.lifecycle.LifecycleData.LIFECYCLE
 import com.program.jetpack.sample.lifecycle.LifecycleData.LIVEDATA
 import com.program.jetpack.sample.lifecycle.LifecycleData.SAVEDSTATE

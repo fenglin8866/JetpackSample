@@ -1,7 +1,7 @@
 package com.program.thinking.ioc
 
 import androidx.compose.runtime.Composable
-import com.program.jetpack.sample.common.MainListScreen
+import com.program.common.MainListScreen
 import com.program.thinking.ioc.IocData.DAGGER
 import com.program.thinking.ioc.IocData.HILT
 
