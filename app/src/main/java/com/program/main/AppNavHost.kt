@@ -4,6 +4,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.HomeMax
 import androidx.compose.material.icons.filled.HomeMini
+import androidx.compose.material.icons.filled.HomeWork
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -13,6 +14,8 @@ import androidx.navigation.compose.composable
 import com.program.example.ExampleMainScreen
 import com.program.jetpack.sample.JetpackMainScreen
 import com.program.jetpack.sample.jetpackNavGraph
+import com.program.language.LanguageMainScreen
+import com.program.language.languageNavGraph
 import com.program.thinking.ThinkingMainScreen
 import com.program.thinking.thinkingNavGraph
 
@@ -36,7 +39,12 @@ object Examples : MainDestinations {
     override val route = "examples"
 }
 
-val bottomScreens = listOf(Jetpack, Thinking, Examples)
+object Language : MainDestinations {
+    override val icon = Icons.Filled.HomeWork
+    override val route = "language"
+}
+
+val bottomScreens = listOf(Jetpack, Thinking, Examples, Language)
 
 @Composable
 fun AppNavHost(
@@ -49,13 +57,13 @@ fun AppNavHost(
         modifier = modifier
     ) {
         composable(Jetpack.route) {
-            JetpackMainScreen{
+            JetpackMainScreen {
                 navController.navigate(it)
             }
         }
 
         composable(Thinking.route) {
-            ThinkingMainScreen{
+            ThinkingMainScreen {
                 navController.navigate(it)
             }
         }
@@ -63,9 +71,18 @@ fun AppNavHost(
         composable(Examples.route) {
             ExampleMainScreen()
         }
+
+        composable(Language.route) {
+            LanguageMainScreen {
+                navController.navigate(it)
+            }
+        }
+
         jetpackNavGraph()
 
         thinkingNavGraph()
+
+        languageNavGraph()
     }
 }
 

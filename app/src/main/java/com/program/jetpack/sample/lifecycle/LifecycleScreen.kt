@@ -23,10 +23,6 @@ val listData = listOf(
 fun LifecycleScreen() {
     MainListScreen(listData) { content, context ->
         when (content) {
-          /*  LIFECYCLE -> Intent(context, RoomActivity::class.java)
-            VIEWMODEL -> Intent(context, RoomActivity::class.java)
-            LIVEDATA -> Intent(context, RoomActivity::class.java)
-            SAVEDSTATE -> Intent(context, RoomActivity::class.java)*/
             else -> {
                 null
             }
