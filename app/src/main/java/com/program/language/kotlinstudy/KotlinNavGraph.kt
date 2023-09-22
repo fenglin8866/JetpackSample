@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import com.program.common.ListScreenString
 import com.program.language.kotlinstudy.KotlinDestination.DELEGATE_ROUTE
 import com.program.language.kotlinstudy.KotlinDestination.HOME_ROUTE
+import com.program.language.kotlinstudy.delegate.DelegateTestScreen
 
 
 object KotlinDestination {

@@ -11,7 +11,11 @@
 
 2.kotlin委托属性
 
-示例a、Compose中
+示例
+    a、Delegate,延迟属性lazy{},可观察属性Delegates.observable{}
+     委托对象的setValue和getValue方法可以是扩展函数，顶层函数，成员函数。
+
+    b、Compose中
         var text by remember {
                     mutableStateOf("")
                 }
@@ -19,15 +23,13 @@
             2、MutableState内实现了setValue和getValue方法。
             3、text的set和get属性委托给setValue和getValue方法，映射为MutableState中Value的变化。
 
-    b、通过委托构建ViewModel
+    c、通过委托构建ViewModel
        private val wordViewModel: WordViewModel by viewModels {
                WordViewModelFactory((application as SampleApplication).repository)
            }
            或
        private val viewModel by viewModels<CheeseViewModel> { CheeseViewModelFactory(application) }
 
-        分析：1、泛型推到类型，需要变量声明类型（val wordViewModel: WordViewModel）或者使用泛型的时候声明类型（viewModels<CheeseViewModel>）
+        分析：1、泛型推导类型，需要变量声明类型（val wordViewModel: WordViewModel）或者使用泛型的时候声明类型（viewModels<CheeseViewModel>）
              2、委托对象ViewModelLazy<VM>,内部包含属性value。构建ViewModel对象并赋值给Lazy对象中的value
              3、变量的set和get属性委托给setValue和getValue方法。get属性通过委托对象的getValue方法，获取构建的ViewModel对象
-
-    c、延迟属性lazy,可观察属性Observable
