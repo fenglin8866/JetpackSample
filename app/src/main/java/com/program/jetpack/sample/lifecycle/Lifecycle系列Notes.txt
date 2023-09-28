@@ -1,0 +1,65 @@
+一、ViewModel
+ViewModel类
+  1.是抽象类，供外部继承。
+  2.统一销毁时回调方法onCleared( )
+  3.存储（添加，获取，释放资源）继承Closeable接口对象
+  4.考虑点：a、多线程操作；b、集合针对存在一边删除一边添加的操作的处理。
+
+Kotlin相关
+一、operator重载运算符
+常用的运算符
+get
+class Point(val x: Int, val y: Int) {
+    operator fun get(index: Int): Int {
+        return index + 1
+    }
+}
+val point = Point(2, 3)
+val s1 = point.get(9)
+//等价于
+val s2 = point[9]
+
+compareTo
+class User(val name: String, val age: Int) {
+    //根据年龄做比较，年龄越大，返回正值
+    operator fun compareTo(other: User): Int {
+        return age.compareTo(other.age)
+    }
+}
+val user1 = User("a", 10)
+val user2 = User("b", 20)
+val user3 = User("c", 30)
+val result = user1 > user2
+val result2 = user3 > user2
+Log.d("yy", "$result $result2")
+
+常见的运算符
+a = a + b	a = a.plus(b)
+a = a - b	a = a.minus(b)
+a = a * b	a = a.tiems(b)
+a = a / b	a = a.div(b)
+a = a % b	a = a.rem(b)
+a … b	    a.rangTo(b)
+a % b	    a.rem(b) 或 a.mod(b)
+++a, a++	inc
+!a	        not
+a > b	    a.compareTo(b) > 0
+a < b	    a.compareTo(b) < 0
+a >= b	    a.compareTo(b) >= 0
+a <= b	    a.compareTo(b) <= 0
+a in b	    b.contains(a)
+a !in b	    !b.contains(a)
+
+
+二、泛型
+
+三、常用函数
+apply，run，with，let
+
+四、注解
+示例：DslMarker
+
+五、关键字
+reified operator inline noinline
+
+六、反射
