@@ -42,8 +42,9 @@ android {
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.10.1")
+    implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("androidx.activity:activity-compose:1.7.2")
     implementation("com.google.android.material:material:1.9.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
@@ -94,5 +95,15 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:$retrofit_version")
     implementation("com.squareup.retrofit2:converter-gson:$retrofit_version")
     implementation("com.squareup.retrofit2:retrofit-mock:$retrofit_version")
+
+    val androidx_lifecycle = "2.6.2"
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$androidx_lifecycle")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$androidx_lifecycle")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$androidx_lifecycle")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$androidx_lifecycle")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$androidx_lifecycle")
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:$androidx_lifecycle")
+
+    implementation("androidx.fragment:fragment-ktx:1.6.1")
 
 }

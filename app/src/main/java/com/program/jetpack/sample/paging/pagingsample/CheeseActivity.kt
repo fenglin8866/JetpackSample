@@ -22,6 +22,7 @@ import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -39,6 +40,9 @@ class CheeseActivity : AppCompatActivity() {
     lateinit var binding: ActivityCheeseBinding
         private set
     private val viewModel by viewModels<CheeseViewModel> { CheeseViewModelFactory(application) }
+    private val viewModel2 by lazy {
+        ViewModelProvider(this,CheeseViewModelFactory(application))[CheeseViewModel::class.java]
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

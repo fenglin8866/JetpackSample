@@ -1,9 +1,21 @@
-一、ViewModel
+一、ViewModel相关
+
 ViewModel类
   1.是抽象类，供外部继承。
   2.统一销毁时回调方法onCleared( )
   3.存储（添加，获取，释放资源）继承Closeable接口对象
   4.考虑点：a、多线程操作；b、集合针对存在一边删除一边添加的操作的处理。
+
+
+疑问点：
+1.ViewModel与对象的关联？
+2.为什么定义各种Factory功能类？
+3.CreationExtras，ViewModelInitializer的作用？
+
+收获点
+1.Provider与Factory之间分离
+2.使用顶层函数简化对象的构建
+
 
 Kotlin相关
 一、operator重载运算符
@@ -54,7 +66,7 @@ a !in b	    !b.contains(a)
 二、泛型
 
 三、常用函数
-apply，run，with，let
+apply，also，run，with，let
 
 四、注解
 示例：DslMarker
@@ -63,3 +75,42 @@ apply，run，with，let
 reified operator inline noinline
 
 六、反射
+
+七、函数类型的使用
+
+
+Java相关
+一、AutoCloseable与Closeable接口。
+AutoCloseable接口重点
+1.该接口只有一个close()方法，实现该接口的对象在退出try-with resources块时会自动调用close()方法
+2.try-with resources使用示例
+public class Test {
+    public static void main(String[] args) {
+        try(FileInputStream fileInputStream = new FileInputStream(new File("D:\\a.txt"))) {
+            int read = fileInputStream.read();
+            System.out.println((char)read);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+3.实现该接口不要让close方法抛出InterruptedException，如果InterruptedException是Throwable#addSuppressed， 则可能发生运行时错误行为，会导致异常被抑制的问题
+
+4.与java.io.Closeable的java.io.Closeable#close方法不同，此close方法不要求是幂等的。换句话说，多次调用这个close方法可能会产生一些明显的副作用， 这与Closeable.close不同，后者在多次调用时要求没有效果。
+
+Closeable接口重点
+1.Closeable接口继承自AutoCloseable接口，所以其实现Closeable接口类会在退出try-with resources块时会自动调用close()
+
+AutoCloseable 可以看我这篇文章 AutoCloseable
+
+2.Closeable接口的close()与AutoCloseable接口的close()方法不同的是，Closeable规定其close()是幂等性的，即多次调用效果都是一样的，
+而AutoCloseable接口的close()方法多次调用可能出现错误
+
+幂等：在编程中一个幂等操作的特点是其任意多次执行所产生的影响均与一次执行的影响相同。
+幂等函数，或幂等方法，是指可以使用相同参数重复执行，并能获得相同结果的函数。这些函数不会影响系统状态，也不用担心重复执行会对系统造成改变。
+例如，“setTrue()”函数就是一个幂等函数,无论多次执行，其结果都是一样的.更复杂的操作幂等保证是利用唯一交易号(流水号)实现。
+
+二、多线程
+1.volatile

@@ -1,5 +1,9 @@
 package com.program.jetpack.sample.lifecycle.viewmodel
 
+/**
+ * 存储数据：存储传入ViewModel的数据
+ * 疑问点：为什么定义Key作为map的key？
+ */
 abstract class CreationExtras internal constructor() {
     interface Key<T>
 
@@ -12,6 +16,10 @@ abstract class CreationExtras internal constructor() {
     }
 }
 
+/**
+ * 数据set/get
+ * 数据对象可以反复嵌套。全部存储在第一个对象内。
+ */
 class MutableCreationExtras(initialExtras: CreationExtras = Empty) : CreationExtras() {
 
     init {

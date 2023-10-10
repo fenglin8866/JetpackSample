@@ -12,6 +12,16 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * 疑问点：ViewModel怎么与对象（Activity，Fragment）关联？
+ * ViewModel的构建，注意不能直接new对象。因为直接new对象不会与Activity或Fragment对象关联
+ *   1.使用ViewModelProvider构建
+ *   new ViewModelProvider(this).get(类名::class.java)
+ *   2.使用viewModels方法构建
+ *   val viewModel: SampleRoomViewModel by viewModels {
+ *                         SampleRoomViewModelFactory((application as SampleApplication).useRepository)
+ *                     }
+ */
 public abstract class ViewModel {
 
     @Nullable
@@ -39,6 +49,9 @@ public abstract class ViewModel {
 
     }
 
+    /**
+     * 为什么限制在主线程？
+     */
     @MainThread
     final void clear() {
         mCleared = true;

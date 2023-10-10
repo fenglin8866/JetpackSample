@@ -64,8 +64,7 @@ dependencies {
 
     implementation(project(mapOf("path" to ":libpaging")))
 
-    implementation("androidx.core:core-ktx:1.10.1")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
+    implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.activity:activity-compose:1.7.2")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
@@ -166,7 +165,8 @@ dependencies {
     val okhttp_logging_interceptor = "4.11.0"
     implementation("com.squareup.okhttp3:logging-interceptor:$okhttp_logging_interceptor")
 
-    val androidx_lifecycle = "2.6.1"
+    val androidx_lifecycle = "2.6.2"
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$androidx_lifecycle")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$androidx_lifecycle")
     implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$androidx_lifecycle")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$androidx_lifecycle")
@@ -193,6 +193,8 @@ dependencies {
 
     implementation ("com.jakewharton.timber:timber:5.0.1")
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
+
+    implementation("androidx.fragment:fragment-ktx:1.6.1")
 }
 
 

@@ -3,7 +3,6 @@ package com.program.jetpack.sample.lifecycle.viewmodel
 import android.app.Application
 import androidx.annotation.MainThread
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewmodel.MutableCreationExtras
 import com.program.jetpack.sample.lifecycle.viewmodel.ViewModelProvider.AndroidViewModelFactory.Companion.DEFAULT_KEY
 import com.program.jetpack.sample.lifecycle.viewmodel.ViewModelProvider.AndroidViewModelFactory.Companion.defaultFactory
 import java.lang.IllegalArgumentException
@@ -16,7 +15,22 @@ open class ViewModelProvider @JvmOverloads constructor(
     private val factory: Factory,
     private val defaultCreationExtras: CreationExtras = CreationExtras.Empty
 ) {
+    constructor(owner: ViewModelStoreOwner) : this(
+        owner.viewModelStore,
+        defaultFactory(owner),
+        defaultCreationExtras(owner)
+    )
+
+    constructor(owner: ViewModelStoreOwner, factory: Factory) : this(
+        owner.viewModelStore,
+        factory,
+        defaultCreationExtras(owner)
+    )
+
     interface Factory {
+        /**
+         * 根据类名构建ViewModel对象
+         */
         fun <T : ViewModel> create(modelClass: Class<T>): T {
             throw UnsupportedOperationException(
                 "Factory.create(String) is unsupported.  This Factory requires " +
@@ -33,10 +47,6 @@ open class ViewModelProvider @JvmOverloads constructor(
                 return InitializerViewModelFactory(*initializers)
             }
         }
-    }
-
-    open class OnRequeryFactory {
-        open fun onRequery(viewModel: ViewModel) {}
     }
 
     @Suppress("SingletonConstructor")
@@ -74,6 +84,9 @@ open class ViewModelProvider @JvmOverloads constructor(
         }
     }
 
+    /**
+     * 参数unused的作用？
+     */
     open class AndroidViewModelFactory private constructor(
         private val application: Application?,
         // parameter to avoid clash between constructors with nullable and non-nullable
@@ -164,7 +177,7 @@ open class ViewModelProvider @JvmOverloads constructor(
              * @return A valid [AndroidViewModelFactory]
              */
             @JvmStatic
-            public fun getInstance(application: Application): AndroidViewModelFactory {
+            fun getInstance(application: Application): AndroidViewModelFactory {
                 if (sInstance == null) {
                     sInstance = AndroidViewModelFactory(application)
                 }
@@ -181,17 +194,12 @@ open class ViewModelProvider @JvmOverloads constructor(
         }
     }
 
-    constructor(owner: ViewModelStoreOwner) : this(
-        owner.viewModelStore,
-        defaultFactory(owner),
-        defaultCreationExtras(owner)
-    )
-
-    constructor(owner: ViewModelStoreOwner, factory: Factory) : this(
-        owner.viewModelStore,
-        factory,
-        defaultCreationExtras(owner)
-    )
+    /**
+     * 定义该类的作用？
+     */
+    open class OnRequeryFactory {
+        open fun onRequery(viewModel: ViewModel) {}
+    }
 
     @MainThread
     open operator fun <T : ViewModel> get(modelClass: Class<T>): T {
