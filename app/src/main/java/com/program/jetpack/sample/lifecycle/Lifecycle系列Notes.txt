@@ -1,5 +1,18 @@
 一、ViewModel相关
 
+1.使用ViewModelProvider构建ViewModel过程
+    a.Provider是标准架构，统一外部调用，即Provider与ViewModel完全解耦，肯定与ViewModel的具体构建过程无关。
+    b.ViewModel具体构建由Factory完成，ViewModel需要的构造函数的参数，通过Factory如下两种方式传入。
+       1.通过Factory的构造函数传入。注意create方法的重写，因为get方法的最终调用是create(modelClass: Class<T>, extras: CreationExtras)。
+            继承Factory，重写create(modelClass: Class<T>): T,构建ViewModel返回。
+            继承NewInstanceFactory。重写create(modelClass: Class<T>):T，create(modelClass: Class<T>, extras: CreationExtras): T
+         由于ViewModel是组件，所有内部提供了多种方案。实际开发时只要完整其中一种方案的实现。
+
+       2.通过Factory的create函数参数CreationExtras传入。注意参数的装载和解析。CreationExtras最终是由ViewModelProvider构造函数式传入。
+
+2.ViewModel与外部类关联
+
+
 ViewModel类
   1.是抽象类，供外部继承。
   2.统一销毁时回调方法onCleared( )
@@ -12,9 +25,32 @@ ViewModel类
 2.为什么定义各种Factory功能类？
 3.CreationExtras，ViewModelInitializer的作用？
 
-收获点
+学习收获点
+0.抽象工厂模式 + 备忘录模式
 1.Provider与Factory之间分离
 2.使用顶层函数简化对象的构建
+3.使用委托函数构建ViewModel。
+4.apply，also，let等函数的使用
+apply
+扩展函数，作用：需要调用该对象的属性或方法，作用域：是该对象内部
+also
+扩展函数，作用：使用该对象，作用域：外层对象
+5.里氏代换原则，使用is判断该对象是否有其父类
+
+
+=========================================================================
+
+1.InitializerViewModelFactory的作用
+2.OnRequeryFactory的作用
+3.常用代码简化
+
+其他涉及点
+SavedState
+Navigation
+activity/fragment
+compose
+Hilt
+
 
 
 Kotlin相关

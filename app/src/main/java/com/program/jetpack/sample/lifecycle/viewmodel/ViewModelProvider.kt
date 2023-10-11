@@ -2,14 +2,18 @@ package com.program.jetpack.sample.lifecycle.viewmodel
 
 import android.app.Application
 import androidx.annotation.MainThread
-import androidx.lifecycle.ViewModelProvider
 import com.program.jetpack.sample.lifecycle.viewmodel.ViewModelProvider.AndroidViewModelFactory.Companion.DEFAULT_KEY
 import com.program.jetpack.sample.lifecycle.viewmodel.ViewModelProvider.AndroidViewModelFactory.Companion.defaultFactory
 import java.lang.IllegalArgumentException
 import java.lang.RuntimeException
 import java.lang.reflect.InvocationTargetException
 
-
+/**
+ * 构建ViewModelProvider三要素
+ * ViewModelStore（必传）：用于缓存和备份ViewModel
+ * Factory（可选）：自定义，默认defaultViewModelProviderFactory实现；没有实现使用NewInstanceFactory构建。但自定义ViewModel必须有无参构造函数
+ * CreationExtras（可选）：自定义，默认defaultViewModelCreationExtras实现；没有实现使用空对象。
+ */
 open class ViewModelProvider @JvmOverloads constructor(
     private val store: ViewModelStore,
     private val factory: Factory,
@@ -42,6 +46,9 @@ open class ViewModelProvider @JvmOverloads constructor(
             create(modelClass)
 
         companion object {
+            /**
+             * 默认初始化ViewModelFactory
+             */
             @JvmStatic
             fun from(vararg initializers: ViewModelInitializer<*>): Factory {
                 return InitializerViewModelFactory(*initializers)
@@ -49,6 +56,9 @@ open class ViewModelProvider @JvmOverloads constructor(
         }
     }
 
+    /**
+     * 构建自定义ViewModel无参构造方法的工厂类
+     */
     @Suppress("SingletonConstructor")
     open class NewInstanceFactory : Factory {
         @Suppress("DocumentExceptions")
@@ -76,6 +86,9 @@ open class ViewModelProvider @JvmOverloads constructor(
                     return sInstance!!
                 }
 
+            /**
+             * 标准化，作用：定义需要构建ViewModel的参数。
+             */
             private object ViewModelKeyImpl : CreationExtras.Key<String>
 
 
@@ -85,7 +98,23 @@ open class ViewModelProvider @JvmOverloads constructor(
     }
 
     /**
+     * 构建自定义ViewModel包含Application构造方法的工厂类
+     * 构建Factory两种方式
+     *     1.使用Application构造方法，调用create(modelClass: Class<T>)
+     *     2.不传Application构造方法，调用create(
+     *             modelClass: Class<T>,
+     *             extras: CreationExtras
+     *         )
+     *         或
+     *         create(
+     *             modelClass: Class<T>,
+     *             app: Application
+     *         )
+     *
      * 参数unused的作用？
+     * 构造方法同一个参数定义为可空和非空，为了避免冲突，引入另外一个参数区分。
+     * 作用：构造方法参数为非空，属性为常量可空，需要无参构造方法赋值属性为null值
+     * 参考：language/kotlinstudy/Test
      */
     open class AndroidViewModelFactory private constructor(
         private val application: Application?,
@@ -113,7 +142,7 @@ open class ViewModelProvider @JvmOverloads constructor(
             return if (application != null) {
                 create(modelClass)
             } else {
-                val application = extras[APPLICATION_KEY]
+                val application = extras[APPLICATION_KEY]//由于Key的限制，获取一定是Application类型
                 if (application != null) {
                     create(modelClass, application)
                 } else {
@@ -184,6 +213,9 @@ open class ViewModelProvider @JvmOverloads constructor(
                 return sInstance!!
             }
 
+            /**
+             * 标准化，作用：定义需要构建ViewModel的参数。
+             */
             private object ApplicationKeyImpl : CreationExtras.Key<Application>
 
             /**
@@ -195,12 +227,15 @@ open class ViewModelProvider @JvmOverloads constructor(
     }
 
     /**
-     * 定义该类的作用？
+     * 设计思想，为什么定义该类？该类的作用？
      */
     open class OnRequeryFactory {
         open fun onRequery(viewModel: ViewModel) {}
     }
 
+    /**
+     * 获取ViewModel，同时定义ViewModelStore中map的key
+     */
     @MainThread
     open operator fun <T : ViewModel> get(modelClass: Class<T>): T {
         val canonicalName = modelClass.canonicalName
@@ -208,6 +243,10 @@ open class ViewModelProvider @JvmOverloads constructor(
         return get("$DEFAULT_KEY:$canonicalName", modelClass)
     }
 
+    /**
+     * 构建ViewModel，使用的CreationExtras参数
+     * 默认一个继承NewInstanceFactory，同时可以获取String构造方法的ViewModel
+     */
     @MainThread
     open operator fun <T : ViewModel> get(key: String, modelClass: Class<T>): T {
         val viewModel = store[key]
@@ -234,6 +273,10 @@ open class ViewModelProvider @JvmOverloads constructor(
 
 }
 
+/**
+ * 里氏代换原则
+ * 使用is判断该对象是否有其父类
+ */
 internal fun defaultCreationExtras(owner: ViewModelStoreOwner): CreationExtras {
     return if (owner is HasDefaultViewModelProviderFactory) {
         owner.defaultViewModelCreationExtras
@@ -241,5 +284,5 @@ internal fun defaultCreationExtras(owner: ViewModelStoreOwner): CreationExtras {
 }
 
 @MainThread
-inline fun <reified VM : androidx.lifecycle.ViewModel> ViewModelProvider.get(): VM =
+inline fun <reified VM : ViewModel> ViewModelProvider.get(): VM =
     get(VM::class.java)
