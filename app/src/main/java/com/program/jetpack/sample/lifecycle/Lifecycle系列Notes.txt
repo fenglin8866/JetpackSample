@@ -112,6 +112,9 @@ reified operator inline noinline
 
 六、反射
 
+ viewModel = it.initializer.invoke(extras) as? T
+
+
 七、函数类型的使用
 
 
